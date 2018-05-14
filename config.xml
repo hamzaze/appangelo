@@ -1,0 +1,27 @@
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.italiadirect.app" version="1.0.0">
+  <name>Italia Direct</name>
+  <description>Italia Direct - Glasses</description>
+  <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
+  <content src="index.html" />
+    <access origin="http://www.intellicomstudios.net" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+  <platform name="android">
+       
+    </platform>
+     
+    
+    <preference name="orienation" value="portrait" />
+    <preference name="permissions" value="none" />
+    <preference name="target-device" value="handset" />
+    <preference name="deployment-target" value="8.0" />
+    <preference name="DisallowOverscroll" value="true"/>
+    
+    <plugin name="cordova-plugin-dialogs" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <preference name="phonegap-version" value="cli-7.0.1" />
+</widget>
