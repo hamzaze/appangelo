@@ -1,9 +1,9 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.italiadirect.app" version="1.0.0">
-  <name>Italia Direct</name>
-  <description>Italia Direct - Glasses</description>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.ihumoruangelotsarouchas.app" version="1.0.0">
+  <name>IHU - ANGELO TSAROUCHAS</name>
+  <description>Angelo Tsarouchas - App</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
   <content src="index.html" />
-    <access origin="http://www.intellicomstudios.net" />
+    <access origin="http://192.254.161.118/~ihumoru" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
