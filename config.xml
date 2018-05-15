@@ -13,7 +13,9 @@
   <platform name="android">
        
     </platform>
-     
+    <platform name="ios">
+        
+    </platform> 
     
     <preference name="orienation" value="portrait" />
     <preference name="permissions" value="none" />
