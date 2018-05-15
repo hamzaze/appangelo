@@ -7,6 +7,16 @@
     font-family: ProximaNova-Light;
 }
 
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+-webkit-appearance: none;
+border-radius: 0;
+}
+
 div, .relative{
     display: block;
     position: relative;
@@ -254,7 +264,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#188b9d', end
     height: 100%;
 }
 
-.page-content, .framework7-root{
+.md .page, .ios .page, .page{
     background-image: url("../images/Comedian_APP_BG.jpg");
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -272,24 +282,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#188b9d', end
 
 .md .page-inner[data-name="usetting"] .page-content, .ios .page-inner[data-name="usetting"] .page-content, .page-inner[data-name="usetting"] .page-content{
     padding-top: 42px;
-}
-
-.view.view-main{
-    background: rgba(186,232,235,1);
-    background: -moz-linear-gradient(top, rgba(186,232,235,1) 0%, rgba(246,246,246,0.53) 47%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(186,232,235,1)), color-stop(47%, rgba(246,246,246,0.53)), color-stop(100%, rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top, rgba(186,232,235,1) 0%, rgba(246,246,246,0.53) 47%, rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top, rgba(186,232,235,1) 0%, rgba(246,246,246,0.53) 47%, rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(top, rgba(186,232,235,1) 0%, rgba(246,246,246,0.53) 47%, rgba(255,255,255,0) 100%);
-    background: linear-gradient(to bottom, rgba(186,232,235,1) 0%, rgba(246,246,246,0.53) 47%, rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bae8eb', endColorstr='#ffffff', GradientType=0 );
-}
-
-.view.view-main > .page{
-    left: 3px;
-    top: 3px;
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
 }
 
 .md .page-inner .navbar, .ios .page-inner .navbar, .page-inner .navbar{
