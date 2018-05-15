@@ -1,0 +1,36 @@
+<div data-name="videos" class="page page-inner">
+    <!-- Top Navbar -->
+    <div class="navbar navbar-transparent bg-green-transparent">
+          <div class="navbar-inner paddLeftRight20">
+              <div class="left">
+                <a href="#" class="link back">
+                    <div class="image-holder">
+                        <div class="mAOLThumb"><div class="bg-image" style="background-image: url({{imgsrc}});"></div></div>
+                    </div>
+                </a>  
+                {{firstname}} {{lastname}}
+            </div>
+            <div class="right">
+                <a href="#" class="link back relative"><img src="images/video_APP_icon.png" alt="" /></a>
+            </div>
+          </div>
+    </div>
+    <!-- Scrollable page content -->
+    <div class="page-content">
+        <div id="wrapVideos" class="wrapVideos fullheight">
+            <div data-target="ifnorecords" class="abs top50 fullwidth text-align-center text-white">
+                <div class="paddTopBottom20">
+                    <img src="images/video_APP_icon_lg.png" alt="" />
+                </div>
+                <div class="h2">
+                    {{firstname}} has not<br />
+                    posted any videos<br />
+                    at this time.
+                </div>
+                <div class="padd20"></div>
+                <div><span class="text-white-transparent strong"><u>get notified</u></span> <span class="text-white-transparent">next time {{firstname}}<br />
+    adds a video.</span></div>
+            </div>
+        </div>
+    </div>
+</div>

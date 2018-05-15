@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#2196f3">
-    <!-- Your app title -->
-    <title>iHUMORU - APP - Angelo Tsarouchas</title>
-    <!-- Path to Framework7 Library CSS -->
-    <link rel="stylesheet" href="css/framework7.min.css">
-    <!-- Path to your custom app styles-->
-    <link rel="stylesheet" href="css/my-app.css">
-  </head>
-  <body>
+    <head>
+        <!-- Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- Color theme for statusbar -->
+        <meta name="theme-color" content="#2196f3">
+        <!-- Your app title -->
+        <title>iHUMORU - APP - Angelo Tsarouchas</title>
+        <!-- Path to Framework7 Library CSS -->
+        <link rel="stylesheet" href="css/framework7.min.css">
+        <!-- Path to icons -->
+        <link rel="stylesheet" href="css/framework7-icons.css">
+        <!-- Path to your custom app styles-->
+        <link rel="stylesheet" href="css/MyFontsWebfontsKit.css">
+        <link rel="stylesheet" href="css/fontawesome.min.css">
+        <link rel="stylesheet" href="css/my-app.css">
+    </head>
+    <body>
     <!-- App root element -->
     <div id="app">
-      <!-- Statusbar overlay -->
-      <div class="statusbar"></div>
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
 
-      <!-- Your main view, should have "view-main" class -->
-      <div class="view view-main">
-        <!-- Initial Page, "data-name" contains page name -->
-        <div data-name="home" class="page">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+          <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="home" class="page">
 
-          <!-- Top Navbar -->
-          
-          <!-- Toolbar -->
-          
+              <!-- Top Navbar -->
+              <div class="navbar navbar-transparent">
+                    <div class="navbar-inner">
+                        <div class="right">
+                            <a href="/usetting/" class="link icon-only" data-context='{"id": "5"}'><i class="far fa-bell fa-1x"></i></a>
+                        </div>
+                    </div>
+              </div>
 
-          <!-- Scrollable page content -->
-          <div class="page-content">
-              
-          </div>
+              <!-- Toolbar -->
+
+
+              <!-- Scrollable page content -->
+              <div class="page-content">
+                  <!-- wrap home middle comedian photo + comedian genres pills -->
+                  <div id="homeComedianBlock" class="wrapHomeComedianBlock abs fullwidth padd10 text-align-center">
+                      <div class="display-inline-block image-holder"><div class="mAOLThumb fullwidth" data-target="comedianprofilephoto"></div></div>
+                      <div class="paddTopBottom20">
+                          <div class="text-white text-align-center h2" data-target="comedianprofilename"></div>
+                          <div class="paddTopBottom5 text-white text-align-center" data-target="comedianprofilegenres"></div>
+                      </div>
+                  </div>
+                  
+                  <!-- wrap home menu at the bottom -->
+                  <div id="homeMenu" class="wrapHomeMenu abs bottom0 fullwidth">
+                      <nav id="menu" class="menu grid1">
+                          <div class="item col-33"><a href="/events/" class="relative" data-id="eventlink"><span class="abs top50 fullwidth text-center"><img src="images/events_APP_icon.png" alt="" /></span></a></div>
+                          <div class="item col-33"><a href="/videos/" class="relative" data-id="videolink"><span class="abs top50 fullwidth text-center"><img src="images/video_APP_icon.png" alt="" /></span></a></div>
+                          <div class="item col-33"><a href="/news/" class="relative" data-id="newslink"><span class="abs top50 fullwidth text-center"><img src="images/news_APP_icon.png" alt="" /></span></a></div>
+                          <div class="item col-33"><a href="/bio/" class="relative" data-id="biolink"><span class="abs top50 fullwidth text-center"><img src="images/bio_APP_icon.png" alt="" /></span></a></div>
+                          <div class="item col-33"><a href="/questions/" class="relative" data-id="questionlink"><span class="abs top50 fullwidth text-center"><img src="images/ask_APP_icon.png" alt="" /></span></a></div>
+                          <div class="item col-33"><a href="#" class="relative"><span class="abs top50 fullwidth text-center"><img src="images/Social_APP_icon.png" alt="" /></span></a></div>
+                          <div class="noFloat"></div>
+                      </nav>
+                  </div>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
+    <script type="text/javascript" src="js/awesomefonts.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
-  </body>
+    </body>
 </html>

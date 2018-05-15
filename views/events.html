@@ -1,0 +1,37 @@
+<div data-name="events" class="page page-inner" data-userid="{{userid}}">
+    <!-- Top Navbar -->
+    <div class="navbar navbar-transparent bg-green-transparent">
+        <div class="navbar-inner paddLeftRight20">
+            <div class="left">
+                <a href="#" class="link back">
+                    <div class="image-holder">
+                        <div class="mAOLThumb"><div class="bg-image" style="background-image: url({{imgsrc}});"></div></div>
+                    </div>
+                </a>  
+                {{firstname}} {{lastname}}
+            </div>
+            <div class="right">
+                <a href="#" class="link back relative"><img src="images/events_APP_icon.png" alt="" /></a>
+            </div>
+        </div>
+    </div>
+    <!-- Scrollable page content -->
+    <div class="page-content">
+        <div id="wrapEvents" class="wrapEvents fullheight overflow">
+            <div data-target="ifrecords"></div>
+            <div data-target="ifnorecords" class="abs top50 fullwidth text-align-center text-white">
+                <div class="paddTopBottom20">
+                    <img src="images/events_APP_icon_lg.png" alt="" />
+                </div>
+                <div class="h2">
+                    {{firstname}} has not<br />
+                    posted any upcoming<br />
+                    events.
+                </div>
+                <div class="padd20"></div>
+                <div><span class="text-white-transparent strong"><u>get notified</u></span> <span class="text-white-transparent">next time {{firstname}}<br />
+    adds an event.</span></div>
+            </div>
+        </div>
+    </div>
+</div>
