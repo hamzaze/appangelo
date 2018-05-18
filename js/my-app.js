@@ -1,3 +1,16 @@
+var defaultSettings={
+    checkedvideos: "",
+    checkednews: "",
+    checkedquestions: "",
+    checkedevents: "",
+    range: 100
+};
+
+ if(localStorage.getItem('defaultSettings')!==null){
+    defaultSettings=JSON.parse(localStorage.getItem('defaultSettings'));
+ }
+
+
 var app = new Framework7({
   // App root element
   root: '#app',
@@ -8,31 +21,47 @@ var app = new Framework7({
   // Enable swipe panel
   panel: {
     swipe: 'left',
-  },// Pass app routes on app init
+  },
+  swipeout: {
+    noFollow: true,
+    removeElements: false
+  },
+  // Pass app routes on app init
   routes: [
     {
       path: '/usetting/',
       templateUrl: './views/usetting.html',
+      options: {
+        context: defaultSettings
+        }
     },
     {
       path: '/events/',
       templateUrl: './views/events.html'
     },
     {
+        path: '/eventdetails/',
+        templateUrl: './views/eventdetails.html'
+    },
+    {
       path: '/videos/',
-      templateUrl: './views/videos.html',
+      templateUrl: './views/videos.html'
+    },
+    {
+        path: '/videodetails/',
+        templateUrl: './views/videodetails.html'
     },
     {
       path: '/news/',
-      templateUrl: './views/news.html',
+      templateUrl: './views/news.html'
     },
     {
       path: '/bio/',
-      templateUrl: './views/bio.html',
+      templateUrl: './views/bio.html'
     },
     {
       path: '/questions/',
-      templateUrl: './views/questions.html',
+      templateUrl: './views/questions.html'
     }
   ]
 });
@@ -48,6 +77,8 @@ var ajaxLoaderWithBackground="<div class='overlayWhite'>" + ajaxLoader + "</div>
 
 var APP_TOKEN_KEY="t7tXVxdh-3276212a8b0f5641781bccd2730768d6";
 var APP_COMEDIAN_NAME="angelotsarouchas";
+
+
 
 //Preload static images
 function preloader() {
@@ -104,7 +135,47 @@ function wrapSingleData(data, template){
     return content;
 }
 
-function displayHomeUser(data, container){
+function storeEventToIamGoing($this){
+    var eventsIAmGoingTo={};
+    if(localStorage.getItem('eventsIAmGoingTo')!==null){
+        eventsIAmGoingTo=JSON.parse(localStorage.getItem('eventsIAmGoingTo'));
+    }
+    eventsIAmGoingTo[$this.attr("data-id")]=1;
+    localStorage.setItem('eventsIAmGoingTo', JSON.stringify(eventsIAmGoingTo));
+    
+    //Close swipeout and add custom class, I'm going
+    app.swipeout.close($this.closest("li.swipeout"), function(){
+        $this.closest("div.single-item").addClass("wrap-event-iamgoing");
+    });
+}
+
+function storeDefaultSettingsAndClose($this){
+    var defaultSettings={};
+    var container=$this.closest("div#wrapSettings");
+    defaultSettings["checkedvideos"]=container.find("input[name='aEOE_videos']:checked").length>0?" checked='checked'":"";
+    defaultSettings["checkednews"]=container.find("input[name='aEOE_news']:checked").length>0?" checked='checked'":"";
+    defaultSettings["checkedquestions"]=container.find("input[name='aEOE_questions']:checked").length>0?" checked='checked'":"";
+    defaultSettings["checkedevents"]=container.find("input[name='aEOE_events']:checked").length>0?" checked='checked'":"";
+    defaultSettings["range"]=container.find("input[name='aEOE_range']").val();
+    
+    localStorage.setItem('defaultSettings', JSON.stringify(defaultSettings));
+    
+    app.routes[0].options.context=defaultSettings;
+    app.router.back();
+}
+
+function displayHomeUser(data1, container){
+    
+    var data=data1["results"];
+    //Check for new event within the range
+    var countnewevents=parseInt(data1["countneweventswithinrange"]);
+    
+    if(countnewevents>0){
+        var pillRound='<div class="abs top0 right0 badge-round"><div class="badge bg-red text-align-center"><span class="abs top50 fullwidth">'+countnewevents+'</span></div></div>';
+        
+       $$("[data-id='eventlink']").closest("div.item").prepend(pillRound); 
+    }
+    
     var topNavigationDefault={};
     var eventlinkContext={};
     var videolinkContext={};
@@ -145,6 +216,21 @@ function displayHomeUser(data, container){
 }
 
 function loadGetHomePage(){
+    //Check for #hash comedianname
+    var $hash=window.location.hash.substring(1);
+    APP_COMEDIAN_NAME=$hash;
+    switch($hash){
+        case "hamzahrnjicevic":
+            APP_TOKEN_KEY="E9FELS8W-801e406f69d8f39316e9741126a443f7";
+        break;
+        case "robinozolins":
+            APP_TOKEN_KEY="iSzi1X0w-6917ef1dd05ade72b0de96840158ffc1";
+        break;
+        case "testtester":
+            APP_TOKEN_KEY="kK33J6JE-d5c5048cc78196cd14f73e1cb6685b61";
+        break;
+    }
+    
     var postData={};
     postData["context"]="wrapGetUserInfo";
     postData["apikey"]=APP_TOKEN_KEY;
@@ -158,6 +244,11 @@ function loadGetEventsPage(userid){
     var postData={};
     postData["context"]="wrapGetUserEvents";
     postData["userid"]=userid;
+    //Check is already I'm going events assigned
+    if(localStorage.getItem('eventsIAmGoingTo')!==null){
+        postData["eventsiamgoingto"]=localStorage.getItem('eventsIAmGoingTo');
+    }
+    
     var form=$$("#wrapEvents");
     var obj=$$("#wrapEvents");
     sendAjaxOnFly(postData, form, obj);
@@ -181,6 +272,15 @@ function loadGetNewsPage(userid){
     sendAjaxOnFly(postData, form, obj);
 }
 
+function loadGetQuestionsPage(userid){
+    var postData={};
+    postData["context"]="wrapGetUserQuestions";
+    postData["userid"]=userid;
+    var form=$$("#wrapQuestions");
+    var obj=$$("#wrapQuestions");
+    sendAjaxOnFly(postData, form, obj);
+}
+
 function sendAjaxOnFly(postData, form, obj){
     postData["isFromAPP"]=1;
     postData["comedian"]=APP_COMEDIAN_NAME;
@@ -193,14 +293,20 @@ function sendAjaxOnFly(postData, form, obj){
             if(data['success']==1){
                 switch(postData["context"]){
                     case "wrapGetUserInfo":
-                        displayHomeUser(data["results"], form);
+                        displayHomeUser(data, form);
                     break;
                     case "wrapGetUserEvents":
                     case "wrapGetUserVideos":
                     case "wrapGetUserNews":
+                    case "wrapGetUserQuestions":
                         if(data["results"]){
                             var content=displayWrapAllResults(data["results"], data["content"]);
-                            form.find("div[data-target='ifrecords']").html(content);
+                            if(postData["context"]=="wrapGetUserQuestions"){
+                                form.find("div[data-target='ifrecords'] > div.display-list").html(content);
+                            }else{
+                                form.find("div[data-target='ifrecords']").html(content);
+                            }
+                            
                         }
                         form.removeClass("no-result-found").addClass("results-found");
                     break;
@@ -213,6 +319,7 @@ function sendAjaxOnFly(postData, form, obj){
                     case "wrapGetUserEvents":
                     case "wrapGetUserVideos":
                     case "wrapGetUserNews":
+                    case "wrapGetUserQuestions":    
                         form.removeClass("results-found").addClass("no-result-found");
                     break;
                 }
@@ -233,14 +340,31 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
     postData["context"]=$this.attr("data-context");
     
     switch(postData["context"]){
-        
+        case "storeDefaultSettings":
+            storeDefaultSettingsAndClose($this);
+            return false;
+        break;
+        case "toggleShowHideAdditionalMenu":
+            $this.closest("div.item").toggleClass("show");
+        break;
+        case "addEventToIamGoing":
+            storeEventToIamGoing($this);
+            return false;
+        break;
     }
     console.log(postData);
+});
+
+$$(document).on('range:change', function (e, range) {
+  $$('[data-target="range"]').text(range.value);
 });
 
 app.on('pageInit', function (page) {
     // do something on page init
     var pageName=page.name;
+    if(pageName==="home"){
+        loadGetHomePage();
+    }
     var userid=parseInt(page.route.context.userid);
     switch(pageName){
         case "events":
@@ -251,6 +375,9 @@ app.on('pageInit', function (page) {
         break;
         case "news":
             loadGetNewsPage(userid);
+        break;
+        case "questions":
+            loadGetQuestionsPage(userid);
         break;
     }
 });

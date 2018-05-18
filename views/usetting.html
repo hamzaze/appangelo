@@ -1,19 +1,62 @@
 <div data-name="usetting" class="page page-inner">
     <!-- Scrollable page content -->
     <div class="page-content">
-        <div class="wrapTitleHeader text-align-center text-white h4">
-            <div>
+        <div class="wrapTitleHeader text-align-center h4">
+            <div class="text-white-transparent">
                 <i class="far fa-bell fa-5x"></i>
             </div>
             <div class="padd10"></div>
-            <div>Use the settings below to<br />
+            <div class="text-white">Use the settings below to<br />
     setup APP notifications.</div>
         </div>
-        <div id="wrapSettings" class="wrapSettings">
-            <div class="single-item text-white h4"><div class="display-flex"><div class="align-self-center paddLeftRight20">Videos</div></div></div>
-            <div class="single-item text-white h4"><div class="display-flex"><div class="align-self-center paddLeftRight20">News</div></div></div>
-            <div class="single-item text-white h4"><div class="display-flex"><div class="align-self-center paddLeftRight20">Questions</div></div></div>
-            <div class="single-item text-white h4"><div class="display-flex"><div class="align-self-center paddLeftRight20">Events</div></div></div>
+        <div id="wrapSettings">
+            <div class="wrapSettings">
+                <div class="single-item text-white h4">
+                    <div class="display-flex">
+                        <div class="align-self-center paddLeftRight20">Videos</div>
+                        <div class="align-self-center right paddLeftRight20">
+                            <div class="checkbox iosSwitch checkbox-green"><input type="checkbox" class="mf-checkbox" name="aEOE_videos" value="1"{{checkedvideos}}><label for=""></label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-item text-white h4">
+                    <div class="display-flex">
+                        <div class="align-self-center paddLeftRight20">News</div>
+                        <div class="align-self-center right paddLeftRight20">
+                            <div class="checkbox iosSwitch checkbox-green"><input type="checkbox" class="mf-checkbox" name="aEOE_news" value="1"{{checkednews}}><label for=""></label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-item text-white h4">
+                    <div class="display-flex">
+                        <div class="align-self-center paddLeftRight20">Questions</div>
+                        <div class="align-self-center right paddLeftRight20">
+                            <div class="checkbox iosSwitch checkbox-green"><input type="checkbox" class="mf-checkbox" name="aEOE_questions" value="1"{{checkedquestions}}><label for=""></label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-item text-white h4">
+                    <div class="display-flex">
+                        <div class="align-self-center paddLeftRight20">Events</div>
+                        <div class="align-self-center right paddLeftRight20">
+                            <div class="checkbox iosSwitch checkbox-green"><input type="checkbox" class="mf-checkbox" name="aEOE_events" value="1"{{checkedevents}}><label for=""></label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrapSettingLocation paddLeftRight20 paddTopBottom10 text-white">
+                Only events within <span data-target="range">{{range}}</span> miles of:<br />
+            Hamilton, Ontario, Canada
+            
+            <!-- range slider, enable labels -->
+            <div class="range-slider range-slider-init color-green" data-label="true">
+              <input type="range" min="0" max="500" step="1" value="{{range}}" name="aEOE_range" />
+            </div>
+            </div>
+            
+            <div class="paddTopBottom20 text-center"><button class="btn btn-green" data-action="addedititem" data-context="storeDefaultSettings">Save</button></div>
+            <div class="padd20"></div>
         </div>
     </div>
 </div>

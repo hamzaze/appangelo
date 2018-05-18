@@ -1,0 +1,71 @@
+<div data-name="eventdetails" class="page page-inner" data-id="{{id}}">
+    <!-- Top Navbar -->
+    <div class="navbar navbar-transparent bg-green-transparent">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                </a>
+            </div>
+            <div class="display-inline-block text-align-center fullwidth size-16">EVENT DETAILS</div>
+            <div class="right paddLeftRight20">
+                <a href="#" class="link back relative"><img src="images/events_APP_icon.png" alt="" /></a>
+            </div>
+        </div>
+    </div>
+    <!-- Scrollable page content -->
+    <div class="page-content">
+        <div id="wrapEvents" class="wrapEvents fullheight text-align-center paddTopBottom20">
+            <div class="h4 text-white strong">{{venuename}} - {{city}}</div>
+            <div class="text-white">{{address}}, {{provincename}}</div>
+            <div class="text-white">{{edateformatted}} - {{etimeformatted}}</div>
+            <!-- Check for price -->
+            {{#if fineprice}}
+            <div class="text-white">Tickets starting from: {{fineprice}}</div>
+            {{/if}}
+            <div class="paddTopBottom20">
+                <div class="display-inline-block">
+                    <div class="display-inline-block paddLeftRight5"><a href="" class="btn btn-red external">VENUE DETAILS</a></div>
+                    <div class="display-inline-block paddLeftRight5"><a href="" class="btn btn-green">+ CALENDAR</a></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50"><a href="" class="btn btn-facebook external fullwidth"><i class="fab fa-facebook-square"></i> Share on Facebook</a></div>
+                <div class="col-50"><a href="" class="btn btn-twitter external fullwidth"><i class="fab fa-twitter"></i> Share on twitter</a></div>
+            </div>
+            <!-- Check for google image created -->
+            {{#if googleimgsrc}}
+            <div class="wrapGoogleImg">
+                <a href="{{linktogmap}}" class="external" target="_blank"><img class="fullwidth" src="{{googleimgsrc}}" alt="Find Us on Map" /></a>
+            </div>
+            {{/if}}
+            {{#if comedians}}
+            <div class="wrapEventPerformers padd20">
+                <div class="h4 text-white text-align-center">Featuring LIVE Standup comedy by:</div>
+                <div class="wrapOEStage paddTopBottom20">
+                    <div class="display-inline-block">
+                        <div class="display-flex">
+                        {{#each comedians}}
+                            <div>
+                                <div class="article">
+                                    <div class="image-holder display-inline-block">
+                                        <div class="mAOLThumb">
+                                            <div class="bg-image" style="background-image: url({{imgsrc}});"></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white-transparent lineheight120">{{firstname}}<br />{{lastname}}</div>
+                                </div>
+                            </div>
+                        {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            <!-- Check is buy ticket url set -->
+            {{#if buy_tickets_url}}
+            <div class="wrapTicketBuyURL bg-green-light btn fullwidth">Click here to <a href="{{buy_tickets_url}}" class="text-white external strong"><u>BUY tickets online</u></a></div>
+            {{/if}}
+        </div>
+    </div>
+</div>

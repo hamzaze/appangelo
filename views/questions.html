@@ -1,24 +1,45 @@
-<div data-name="questions" class="page page-inner">
+<div data-name="questions" class="page page-inner" data-userid="{{userid}}">
     <!-- Top Navbar -->
     <div class="navbar navbar-transparent bg-green-transparent">
-          <div class="navbar-inner paddLeftRight20">
-                <div class="left">
+        <div class="navbar-inner paddLeftRight20">
+            <div class="left">
                 <a href="#" class="link back">
                     <div class="image-holder">
                         <div class="mAOLThumb"><div class="bg-image" style="background-image: url({{imgsrc}});"></div></div>
                     </div>
                 </a>  
                 {{firstname}} {{lastname}}
-                </div>
-                <div class="right">
-                    <a href="#" class="link back relative"><img src="images/ask_APP_icon.png" alt="" /></a>
-                </div>
-          </div>
+            </div>
+            <div class="right">
+                <a href="#" class="link back relative"><img src="images/ask_APP_icon.png" alt="" /></a>
+            </div>
+        </div>
     </div>
     <!-- Scrollable page content -->
     <div class="page-content">
-        <div class="wrapTitleHeader text-align-center text-white h4">
-            Questions
+        <div id="wrapQuestions" class="wrapQuestions fullheight overflow">
+            <div data-target="ifrecords" class="text-align-center text-white">
+                <div class="padd10"></div>
+                <div class="padd10 h4">Have a question for {{firstname}}?</div>
+                <div><a href="" class="btn btn-green external">ASK IT!</a></div>
+                <div class="padd20"></div>
+                <div class="display-list text-align-left"></div>
+            </div>
+            <div data-target="ifnorecords" class="abs top50 fullwidth text-align-center text-white">
+                <div class="paddTopBottom20">
+                    <img src="images/ask_APP_icon_lg.png" alt="" />
+                </div>
+                <div class="h2">
+                    {{firstname}} has not<br />
+                    been asked yet.
+                </div>
+                <div class="padd10"></div>
+                <div class="padd10">Have a question for {{firstname}}?</div>
+                <div><a href="" class="btn btn-green external">ASK IT!</a></div>
+                <div class="padd20"></div>
+                <div><span class="text-white-transparent strong"><u>get notified</u></span> <span class="text-white-transparent">next time {{firstname}}<br />
+    is being asked.</span></div>
+            </div>
         </div>
     </div>
 </div>
