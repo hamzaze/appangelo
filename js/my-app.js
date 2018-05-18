@@ -218,17 +218,19 @@ function displayHomeUser(data1, container){
 function loadGetHomePage(){
     //Check for #hash comedianname
     var $hash=window.location.hash.substring(1);
-    APP_COMEDIAN_NAME=$hash;
-    switch($hash){
-        case "hamzahrnjicevic":
-            APP_TOKEN_KEY="E9FELS8W-801e406f69d8f39316e9741126a443f7";
-        break;
-        case "robinozolins":
-            APP_TOKEN_KEY="iSzi1X0w-6917ef1dd05ade72b0de96840158ffc1";
-        break;
-        case "testtester":
-            APP_TOKEN_KEY="kK33J6JE-d5c5048cc78196cd14f73e1cb6685b61";
-        break;
+    if($hash!==""){
+        APP_COMEDIAN_NAME=$hash;
+        switch($hash){
+            case "hamzahrnjicevic":
+                APP_TOKEN_KEY="E9FELS8W-801e406f69d8f39316e9741126a443f7";
+            break;
+            case "robinozolins":
+                APP_TOKEN_KEY="iSzi1X0w-6917ef1dd05ade72b0de96840158ffc1";
+            break;
+            case "testtester":
+                APP_TOKEN_KEY="kK33J6JE-d5c5048cc78196cd14f73e1cb6685b61";
+            break;
+        }
     }
     
     var postData={};
