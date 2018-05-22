@@ -404,6 +404,16 @@ img{
 
 .md .navbar.navbar-transparent, .ios .navbar.navbar-transparent, .navbar.navbar-transparent, .ios .navbar{
     background: transparent;
+    color: #fff;
+}
+
+.md .navbar, .ios .navbar, .navbar, .md .navbar a, .ios .navbar a, .navbar a{
+    color: #fff;
+}
+
+.ios .navbar-inner{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .md .navbar.navbar-transparent.bg-green-transparent, .ios .navbar.navbar-transparent.bg-green-transparent, .navbar.navbar-transparent.bg-green-transparent, .ios .page-inner .navbar{

@@ -4,11 +4,11 @@
         <div class="navbar-inner">
             <div class="left">
                 <a href="#" class="link back">
-                    <i class="icon icon-back"></i>
+                    <i class="fas fa-chevron-left"></i>
                 </a>
             </div>
             <div class="display-inline-block text-align-center fullwidth size-16">EVENT DETAILS</div>
-            <div class="right paddLeftRight20">
+            <div class="right">
                 <a href="#" class="link back relative"><img src="images/events_APP_icon.png" alt="" /></a>
             </div>
         </div>
@@ -25,8 +25,8 @@
             {{/if}}
             <div class="paddTopBottom20">
                 <div class="display-inline-block">
-                    <div class="display-inline-block paddLeftRight5"><a href="" class="btn btn-red external">VENUE DETAILS</a></div>
-                    <div class="display-inline-block paddLeftRight5"><a href="" class="btn btn-green">+ CALENDAR</a></div>
+                    <div class="display-inline-block paddLeftRight5"><a href="{{documentroot}}/{{venuerealpath}}" class="btn btn-red external" target="_blank">VENUE DETAILS</a></div>
+                    <div class="display-inline-block paddLeftRight5"><a href="#" class="btn btn-green" data-action="addeditevent" data-context="addEventToCalendar">+ CALENDAR</a></div>
                 </div>
             </div>
             <div class="row">

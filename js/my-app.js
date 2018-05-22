@@ -6,6 +6,8 @@ var defaultSettings={
     range: 100
 };
 
+var timestamp   = Date.now();
+
  if(localStorage.getItem('defaultSettings')!==null){
     defaultSettings=JSON.parse(localStorage.getItem('defaultSettings'));
  }
@@ -22,6 +24,9 @@ var app = new Framework7({
   panel: {
     swipe: 'left',
   },
+  view: {
+    iosDynamicNavbar: false,
+  },
   swipeout: {
     noFollow: true,
     removeElements: false
@@ -30,38 +35,38 @@ var app = new Framework7({
   routes: [
     {
       path: '/usetting/',
-      templateUrl: './views/usetting.html',
+      templateUrl: './views/usetting.html?'+timestamp,
       options: {
         context: defaultSettings
         }
     },
     {
       path: '/events/',
-      templateUrl: './views/events.html'
+      templateUrl: './views/events.html?'+timestamp
     },
     {
         path: '/eventdetails/',
-        templateUrl: './views/eventdetails.html'
+        templateUrl: './views/eventdetails.html?'+timestamp
     },
     {
       path: '/videos/',
-      templateUrl: './views/videos.html'
+      templateUrl: './views/videos.html?'+timestamp
     },
     {
         path: '/videodetails/',
-        templateUrl: './views/videodetails.html'
+        templateUrl: './views/videodetails.html?'+timestamp
     },
     {
       path: '/news/',
-      templateUrl: './views/news.html'
+      templateUrl: './views/news.html?'+timestamp
     },
     {
       path: '/bio/',
-      templateUrl: './views/bio.html'
+      templateUrl: './views/bio.html?'+timestamp
     },
     {
       path: '/questions/',
-      templateUrl: './views/questions.html'
+      templateUrl: './views/questions.html?'+timestamp
     }
   ]
 });
@@ -351,6 +356,10 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
         break;
         case "addEventToIamGoing":
             storeEventToIamGoing($this);
+            return false;
+        break;
+        case "addEventToCalendar":
+            addEventToCalendar();
             return false;
         break;
     }
