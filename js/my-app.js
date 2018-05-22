@@ -340,9 +340,8 @@ function sendAjaxOnFly(postData, form, obj){
  }
  
 addToCalendar = function(data) {
-    if (window.plugins.calendar) {
-        
-        var data=window.atob(data);
+    
+     var data=window.atob(data);
         var v={};
         var a=data.split("|");
         a.forEach(function(element){
@@ -355,6 +354,12 @@ addToCalendar = function(data) {
         var title = v["dsum"];
         var eventLocation = v["dloca"];
         var notes = v["ddesc"];
+        
+        console.log(startDate);
+    
+    if (window.plugins.calendar) {
+        
+       
         
         var success = function(message) { displayAlert("Your event has been added to your calendar", $$("body")); };
         var error = function(message) { displayAlert("Error: " + message, $$("body")); };
