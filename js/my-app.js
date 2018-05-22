@@ -356,7 +356,7 @@ addToCalendar = function(data) {
         var eventLocation = v["dloca"];
         var notes = v["ddesc"];
         
-        var success = function(message) { displayInfo("Your event has been added to your calendar", $$("body")); };
+        var success = function(message) { displayAlert("Your event has been added to your calendar", $$("body")); };
         var error = function(message) { displayAlert("Error: " + message, $$("body")); };
 
         var calSuccess = success;
