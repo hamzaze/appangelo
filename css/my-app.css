@@ -294,6 +294,7 @@ img{
 
 .md .navbar a.link, .ios .navbar a.link, .navbar a.link {
     line-height: 100%;
+    min-width: 10px;
 }
 
 .md .range-slider.color-green .range-bar-active, .md .range-slider.color-green .range-knob, .md .range-slider.color-green .range-knob-label, .md .range-slider.color-green .range-knob-label::before{
@@ -411,9 +412,13 @@ img{
     color: #fff;
 }
 
-.ios .navbar-inner{
+.ios .navbar-inner, .md .navbar-inner, .navbar-inner{
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.ios .navbar .left, .md .navbar .left, .navbar .left {
+    margin-right: 10px;
 }
 
 .md .navbar.navbar-transparent.bg-green-transparent, .ios .navbar.navbar-transparent.bg-green-transparent, .navbar.navbar-transparent.bg-green-transparent, .ios .page-inner .navbar{
