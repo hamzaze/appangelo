@@ -338,6 +338,30 @@ function sendAjaxOnFly(postData, form, obj){
             
        
  }
+ 
+ this.addToCalendar = function() {
+    if (window.plugins.calendar) {
+        var hour = session.time.substring(0,session.time.indexOf(':'));
+        if (session.time.indexOf("pm")>-1)
+            hour = parseInt(hour)+12;
+
+        var startDate = new Date(2014,9,23,hour,00,00); //set to PG Day workshop date
+        var endDate = new Date();
+        endDate.setTime(startDate.getTime() + 3600000);//one hour
+
+        var calSuccess = function (message) {
+            alert(session.title + " has been added to your calendar.");
+        };
+        var calError = function (message) {
+            alert("Error: " + message);
+        };
+        window.plugins.calendar.createEvent(session.title, session.room, session.description, startDate, endDate,
+            function(){alert(session.title + " has been added to your calendar.");}, function (error) {
+                console.log("Calendar fail " + error);
+            });
+    }
+    else console.log("Calendar plugin not found");
+}
 
 $$(document).on("click", "[data-action='addedititem']", function(e){
     e.preventDefault();
@@ -359,7 +383,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
             return false;
         break;
         case "addEventToCalendar":
-            addEventToCalendar();
+            addToCalendar();
             return false;
         break;
     }
@@ -391,4 +415,7 @@ app.on('pageInit', function (page) {
             loadGetQuestionsPage(userid);
         break;
     }
+    
+    //this.$el.on('click', '[data-context="addEventToCalendar"]', this.addToCalendar);
+    
 });
