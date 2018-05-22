@@ -342,24 +342,17 @@ function sendAjaxOnFly(postData, form, obj){
 addToCalendar = function() {
     if (window.plugins.calendar) {
         displayAlert("calendar plugin is installed", $$("body"));
-        var hour = session.time.substring(0,session.time.indexOf(':'));
-        if (session.time.indexOf("pm")>-1)
-            hour = parseInt(hour)+12;
+        var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
+        var endDate = new Date(2015,2,15,19,30,0,0,0);
+        var title = "My nice event";
+        var eventLocation = "Home";
+        var notes = "Some notes about this event.";
+        var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+        var error = function(message) { alert("Error: " + message); };
 
-        var startDate = new Date(2014,9,23,hour,00,00); //set to PG Day workshop date
-        var endDate = new Date();
-        endDate.setTime(startDate.getTime() + 3600000);//one hour
-
-        var calSuccess = function (message) {
-            alert(session.title + " has been added to your calendar.");
-        };
-        var calError = function (message) {
-            alert("Error: " + message);
-        };
-        window.plugins.calendar.createEvent(session.title, session.room, session.description, startDate, endDate,
-            function(){alert(session.title + " has been added to your calendar.");}, function (error) {
-                console.log("Calendar fail " + error);
-            });
+        var calSuccess = success;
+        var calError = error;
+        window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
     }
     else displayAlert("Calendar plugin not found", $$("body"));
 }
@@ -385,7 +378,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
         break;
         case "addEventToCalendar":
             console.log("right place");
-            addEventToCalendar();
+            addToCalendar();
             return false;
         break;
     }
