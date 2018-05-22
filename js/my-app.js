@@ -350,8 +350,8 @@ addToCalendar = function(data) {
             v[temp[0]]=temp[1];
         });
         
-        var startDate = v["dstart"] // beware: month 0 = january, 11 = december
-        var endDate = v["dend"];
+        var startDate = new Date(v["dstart"]) // beware: month 0 = january, 11 = december
+        var endDate = new Date(v["dend"]);
         var title = v["dsum"];
         var eventLocation = v["dloca"];
         var notes = v["ddesc"];
