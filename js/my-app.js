@@ -385,7 +385,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
         break;
         case "addEventToCalendar":
             console.log("right place");
-            addToCalendar();
+            addEventToCalendar();
             return false;
         break;
     }
