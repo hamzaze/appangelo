@@ -350,11 +350,12 @@ addToCalendar = function(data) {
             v[temp[0]]=temp[1];
         });
         
-        var startDate = new Date(v["dstart"]) // beware: month 0 = january, 11 = december
-        var endDate = new Date(v["dend"]);
+        var startDate = new Date(parseInt(v["dstart"])); // beware: month 0 = january, 11 = december
+        var endDate = new Date(parseInt(v["dend"]));
         var title = v["dsum"];
         var eventLocation = v["dloca"];
         var notes = v["ddesc"];
+        
         var success = function(message) { displayInfo("Your event has been added to your calendar", $$("body")); };
         var error = function(message) { displayAlert("Error: " + message, $$("body")); };
 
