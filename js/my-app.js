@@ -339,8 +339,9 @@ function sendAjaxOnFly(postData, form, obj){
        
  }
  
- this.addToCalendar = function() {
+addToCalendar = function() {
     if (window.plugins.calendar) {
+        displayAlert("calendar plugin is installed", $$("body"));
         var hour = session.time.substring(0,session.time.indexOf(':'));
         if (session.time.indexOf("pm")>-1)
             hour = parseInt(hour)+12;
@@ -360,7 +361,7 @@ function sendAjaxOnFly(postData, form, obj){
                 console.log("Calendar fail " + error);
             });
     }
-    else console.log("Calendar plugin not found");
+    else displayAlert("Calendar plugin not found", $$("body"));
 }
 
 $$(document).on("click", "[data-action='addedititem']", function(e){
@@ -383,6 +384,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
             return false;
         break;
         case "addEventToCalendar":
+            console.log("right place");
             addToCalendar();
             return false;
         break;
