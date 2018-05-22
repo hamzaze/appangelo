@@ -339,16 +339,24 @@ function sendAjaxOnFly(postData, form, obj){
        
  }
  
-addToCalendar = function() {
+addToCalendar = function(data) {
     if (window.plugins.calendar) {
-        displayAlert("calendar plugin is installed", $$("body"));
-        var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
-        var endDate = new Date(2015,2,15,19,30,0,0,0);
-        var title = "My nice event";
-        var eventLocation = "Home";
-        var notes = "Some notes about this event.";
-        var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-        var error = function(message) { alert("Error: " + message); };
+        
+        var data=window.atob(data);
+        var v={};
+        var a=data.split("|");
+        a.forEach(function(element){
+            var temp=element.split("{");
+            v[temp[0]]=temp[1];
+        });
+        
+        var startDate = v["dstart"] // beware: month 0 = january, 11 = december
+        var endDate = v["dend"];
+        var title = v["dsum"];
+        var eventLocation = v["dloca"];
+        var notes = v["ddesc"];
+        var success = function(message) { displayInfo("Your event has been added to your calendar", $$("body")); };
+        var error = function(message) { displayAlert("Error: " + message, $$("body")); };
 
         var calSuccess = success;
         var calError = error;
@@ -377,8 +385,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
             return false;
         break;
         case "addEventToCalendar":
-            console.log("right place");
-            addToCalendar();
+            addToCalendar($this.attr("data-calendardata"));
             return false;
         break;
     }
