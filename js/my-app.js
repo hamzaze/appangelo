@@ -339,7 +339,7 @@ function sendAjaxOnFly(postData, form, obj){
        
  }
  
-addToCalendar = function(data) {
+addToCalendar = function(data, firstname) {
     
      var data=window.atob(data);
         var v={};
@@ -361,7 +361,7 @@ addToCalendar = function(data) {
         
        
         
-        var success = function(message) { displayAlert("Your event has been added to your calendar", $$("body")); };
+        var success = function(message) { displayAlert(firstname + "'s event has been added to your calendar.", $$("body")); };
         var error = function(message) { displayAlert("Error: " + message, $$("body")); };
 
         var calSuccess = success;
@@ -391,7 +391,7 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
             return false;
         break;
         case "addEventToCalendar":
-            addToCalendar($this.attr("data-calendardata"));
+            addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
             return false;
         break;
     }
