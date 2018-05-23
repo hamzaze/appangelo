@@ -222,6 +222,7 @@ function displayHomeUser(data1, container){
 
 function loadGetHomePage(){
     //Check for #hash comedianname
+    console.log("loadGetHomePage");
     var $hash=window.location.hash.substring(1);
     if($hash!==""){
         APP_COMEDIAN_NAME=$hash;
