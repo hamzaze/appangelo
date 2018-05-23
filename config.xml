@@ -25,6 +25,8 @@
     
     <plugin name="cordova-plugin-dialogs" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <!-- White list https access to Youtube -->
+    <allow-navigation href="https://*youtube.com/*"/>
     <plugin name="cordova-plugin-calendar" source="npm">
         <variable name="CALENDAR_USAGE_DESCRIPTION" value="This app uses your calendar" />
     </plugin>
