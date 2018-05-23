@@ -25,13 +25,12 @@ var app = new Framework7({
     swipe: 'left',
   },
   view: {
-    iosDynamicNavbar: false,
+    iosDynamicNavbar: false
   },
   swipeout: {
     noFollow: true,
     removeElements: false
   },
-  pushState : true,
   // Pass app routes on app init
   routes: [
     {
@@ -404,8 +403,9 @@ $$(document).on('range:change', function (e, range) {
   $$('[data-target="range"]').text(range.value);
 });
 
-app.on('pageInit', function (page) {
+$$(document).on('page:init', function (e, page) {
     // do something on page init
+    
     var pageName=page.name;
     if(pageName==="home"){
         loadGetHomePage();
