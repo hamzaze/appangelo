@@ -12,10 +12,6 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
   
-    <platform name="ios">
-        
-    </platform> 
-    
     <preference name="orienation" value="portrait" />
     <preference name="permissions" value="none" />
     <preference name="target-device" value="handset" />
