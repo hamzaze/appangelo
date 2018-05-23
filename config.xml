@@ -3,7 +3,7 @@
   <description>Angelo Tsarouchas - App</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
   <content src="index.html" />
-    <access origin="*" />
+    <access origin="http://192.254.161.118/~ihumoru/php/ajaxDispatcher1.php" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-navigation href="*" />
