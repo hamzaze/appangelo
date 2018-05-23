@@ -17,8 +17,14 @@
     <div class="page-content">
         <div id="wrapVideos" class="wrapVideos fullheight">
             <div class="h4 text-green1 paddLeftRight20 paddTopBottom10">{{videotitle}}</div>
-            <div class="wrapVideoPlayer">
+            <div class="wrapVideoPlayer wrapVideoInline">
+                <a href="#" class="abs top0 left0 fullwidth fullheight" data-action="addedititem" data-context="playVideo" data-videohref="{{videoitem}}?autoplay=1">
+                    <div class="abs top50 text-center fullwidth">
+                        <div class="fa-4x text-white"><i class="far fa-play-circle"></i></div>
+                    </div>
+                </a>
                 <img class="fullwidth" src="{{img}}" alt="Watch Video!" />
+                <iframe src="" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="wrapVideoDetails">
                 <div class="display-flex">

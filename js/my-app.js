@@ -140,6 +140,11 @@ function wrapSingleData(data, template){
     return content;
 }
 
+function playVideo($this){
+    $this.closest("div.wrapVideoPlayer").addClass("activated");
+    $this.closest("div.wrapVideoPlayer").find("iframe").attr("src", $this.attr("data-videohref"));
+}
+
 function storeEventToIamGoing($this){
     var eventsIAmGoingTo={};
     if(localStorage.getItem('eventsIAmGoingTo')!==null){
@@ -394,6 +399,9 @@ $$(document).on("click", "[data-action='addedititem']", function(e){
         case "addEventToCalendar":
             addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
             return false;
+        break;
+        case "playVideo":
+            playVideo($this);
         break;
     }
     console.log(postData);
