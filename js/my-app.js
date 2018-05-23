@@ -31,6 +31,7 @@ var app = new Framework7({
     noFollow: true,
     removeElements: false
   },
+  pushState : true,
   // Pass app routes on app init
   routes: [
     {
