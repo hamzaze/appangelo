@@ -950,6 +950,6 @@ div.wrapVideoInline.activated > iframe{
     z-index: 20;
 }
 
-div.wrapVideoInline.activated > a{
+div.wrapVideoInline.activated > a, div.wrapVideoInline.activated > img{
     display: none;
 }
