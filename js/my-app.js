@@ -85,6 +85,23 @@ var APP_COMEDIAN_NAME="angelotsarouchas";
 
 
 
+
+            // Wait for device API libraries to load
+            //
+            document.addEventListener("deviceready", onDeviceReady, false);
+            console.log(device);
+            // device APIs are available
+            //
+            function onDeviceReady() {
+                var element = document.getElementById('deviceProperties');
+                element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                                    'Device Cordova: '  + device.cordova  + '<br />' +
+                                    'Device Platform: ' + device.platform + '<br />' +
+                                    'Device UUID: '     + device.uuid     + '<br />' +
+                                    'Device Version: '  + device.version  + '<br />';
+            }
+
+
 //Preload static images
 function preloader() {
 	if (document.images) {
