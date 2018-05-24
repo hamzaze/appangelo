@@ -440,4 +440,5 @@ $$(document).on('page:init', function (e, page) {
 
 $$(document).on('deviceready', function(){
     console.log("deviceready is ready");
+    cordova.addConstructor(Calendar.install);
 });
