@@ -438,6 +438,38 @@ $$(document).on('page:init', function (e, page) {
     
 });
 
+function setupPushInit(){
+    var push = PushNotification.init({
+       "android": {},
+       "ios": {
+         "sound": true,
+         "alert": true,
+         "badge": true
+       },
+       "windows": {}
+   });
+   
+   push.on('error', function(e) {
+       console.log("push error = " + e.message);
+   });
+   
+   push.on('notification', function(data) {
+         console.log('notification event');
+         navigator.notification.alert(
+             data.message,         // message
+             null,                 // callback
+             data.title,           // title
+             'Ok'                  // buttonName
+         );
+     });
+}
+
+var isCordovaApp = document.URL.indexOf('http://') === -1
+  && document.URL.indexOf('https://') === -1;
+
 $$(document).on('deviceready', function(){
     console.log("deviceready is ready");
+    if(isCordovaApp) {
+        setupPushInit();
+    }
 });

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "604352768975",
+    "firebase_url": "https://ihumoru-push-notifications.firebaseio.com",
+    "project_id": "ihumoru-push-notifications",
+    "storage_bucket": "ihumoru-push-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604352768975:android:3127b87fbb44cd52",
+        "android_client_info": {
+          "package_name": "com.ihumoruangelotsarouchas.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604352768975-4l102ducsheqhqj9h85b48cf185nu0bn.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "604352768975-4l102ducsheqhqj9h85b48cf185nu0bn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7q3Lmj5ORsyLR9dRw9Idc6konzSw0jiw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,15 +14,17 @@
     
     <platform name="ios" />
     <platform name="android">
-       
+        <resource-file src="google-services.json" target="google-services.json" />
     </platform>
   
+    <preference name="SplashScreenDelay" value="10000" />
     <preference name="orienation" value="portrait" />
     <preference name="permissions" value="none" />
     <preference name="target-device" value="handset" />
     <preference name="deployment-target" value="8.0" />
     <preference name="DisallowOverscroll" value="true"/>
     
+    <plugin name="phonegap-plugin-push" spec="2.0.0" />
     <plugin name="cordova-plugin-dialogs" />
     <plugin name="cordova-plugin-android-permissions" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
