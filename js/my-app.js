@@ -376,7 +376,35 @@ addToCalendar = function(data, firstname) {
     else displayAlert("Calendar plugin not found", $$("body"));
 }
 
-
+$$(document).on("click", "[data-action='addedititem']", function(e){
+    e.preventDefault();
+    var $this=$$(this);
+    
+    var postData={};
+    postData["context"]=$this.attr("data-context");
+    
+    switch(postData["context"]){
+        case "storeDefaultSettings":
+            storeDefaultSettingsAndClose($this);
+            return false;
+        break;
+        case "toggleShowHideAdditionalMenu":
+            $this.closest("div.item").toggleClass("show");
+        break;
+        case "addEventToIamGoing":
+            storeEventToIamGoing($this);
+            return false;
+        break;
+        case "addEventToCalendar":
+            addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
+            return false;
+        break;
+        case "playVideo":
+            playVideo($this);
+        break;
+    }
+    console.log(postData);
+});
 
 $$(document).on('range:change', function (e, range) {
   $$('[data-target="range"]').text(range.value);
@@ -412,34 +440,4 @@ $$(document).on('page:init', function (e, page) {
 
 $$(document).on('deviceready', function(){
     console.log("deviceready is ready");
-    
-    $$(document).on("click", "[data-action='addedititem']", function(e){
-    e.preventDefault();
-    var $this=$$(this);
-    
-    var postData={};
-    postData["context"]=$this.attr("data-context");
-    
-    switch(postData["context"]){
-        case "storeDefaultSettings":
-            storeDefaultSettingsAndClose($this);
-            return false;
-        break;
-        case "toggleShowHideAdditionalMenu":
-            $this.closest("div.item").toggleClass("show");
-        break;
-        case "addEventToIamGoing":
-            storeEventToIamGoing($this);
-            return false;
-        break;
-        case "addEventToCalendar":
-            addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
-            return false;
-        break;
-        case "playVideo":
-            playVideo($this);
-        break;
-    }
-    console.log(postData);
-});
 });
