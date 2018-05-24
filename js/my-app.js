@@ -417,8 +417,9 @@ $$(document).on('page:init', function (e, page) {
     var pageName=page.name;
     if(pageName==="home"){
         loadGetHomePage();
+    }else{
+        var userid=parseInt(page.route.context.userid);
     }
-    var userid=parseInt(page.route.context.userid);
     switch(pageName){
         case "events":
             loadGetEventsPage(userid);
