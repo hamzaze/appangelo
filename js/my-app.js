@@ -376,35 +376,7 @@ addToCalendar = function(data, firstname) {
     else displayAlert("Calendar plugin not found", $$("body"));
 }
 
-$$(document).on("click", "[data-action='addedititem']", function(e){
-    e.preventDefault();
-    var $this=$$(this);
-    
-    var postData={};
-    postData["context"]=$this.attr("data-context");
-    
-    switch(postData["context"]){
-        case "storeDefaultSettings":
-            storeDefaultSettingsAndClose($this);
-            return false;
-        break;
-        case "toggleShowHideAdditionalMenu":
-            $this.closest("div.item").toggleClass("show");
-        break;
-        case "addEventToIamGoing":
-            storeEventToIamGoing($this);
-            return false;
-        break;
-        case "addEventToCalendar":
-            addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
-            return false;
-        break;
-        case "playVideo":
-            playVideo($this);
-        break;
-    }
-    console.log(postData);
-});
+
 
 $$(document).on('range:change', function (e, range) {
   $$('[data-target="range"]').text(range.value);
@@ -440,19 +412,34 @@ $$(document).on('page:init', function (e, page) {
 
 $$(document).on('deviceready', function(){
     console.log("deviceready is ready");
+    
+    $$(document).on("click", "[data-action='addedititem']", function(e){
+    e.preventDefault();
+    var $this=$$(this);
+    
+    var postData={};
+    postData["context"]=$this.attr("data-context");
+    
+    switch(postData["context"]){
+        case "storeDefaultSettings":
+            storeDefaultSettingsAndClose($this);
+            return false;
+        break;
+        case "toggleShowHideAdditionalMenu":
+            $this.closest("div.item").toggleClass("show");
+        break;
+        case "addEventToIamGoing":
+            storeEventToIamGoing($this);
+            return false;
+        break;
+        case "addEventToCalendar":
+            addToCalendar($this.attr("data-calendardata"), $this.attr("data-firstname"));
+            return false;
+        break;
+        case "playVideo":
+            playVideo($this);
+        break;
+    }
+    console.log(postData);
 });
-
- function calendar_events(){
- var startDate = new Date(2018,5,31,18,30,0,0,0); // beware: month 0 = january, 11 = december
-  var endDate = new Date(2018,5,31,19,30,0,0,0);
-  var title = "Skype meeting With Lead";
- //var location = "myleads.html";
-  var notes = "Need to do a skype meeting with the lead.";
-  var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-  var error = function(message) { alert("Error: " + message); };
-  // window.plugins.calendar.listEventsInRange(startDate,endDate,success,error);
-
-//  window.plugins.calendar.createCalendar(calendarName,success,error);
-  window.plugins.calendar.createEvent(title,location,notes,startDate,endDate,success,error);
- }
- document.addEventListener("deviceready", calendar_events, false);
+});
