@@ -443,8 +443,8 @@ $$(document).on('deviceready', function(){
 });
 
  function calendar_events(){
- var startDate = new Date(2014,4,31,18,30,0,0,0); // beware: month 0 = january, 11 = december
-  var endDate = new Date(2014,4,31,19,30,0,0,0);
+ var startDate = new Date(2018,5,31,18,30,0,0,0); // beware: month 0 = january, 11 = december
+  var endDate = new Date(2018,5,31,19,30,0,0,0);
   var title = "Skype meeting With Lead";
  //var location = "myleads.html";
   var notes = "Need to do a skype meeting with the lead.";
