@@ -506,6 +506,7 @@ function setupPush(userid, data1) {
         postData["senderid"]=newRegID;
         postData["oldsenderid"]=oldRegId;
         postData["data"]=data1;
+        postData["uuid"]=device.uuid;
        
         sendAjaxOnFly(postData, null, null);
        

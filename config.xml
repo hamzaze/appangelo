@@ -27,6 +27,7 @@
     
     <plugin name="phonegap-plugin-push" spec="2.0.0" />
     <plugin name="cordova-plugin-dialogs" />
+    <plugin name="cordova-plugin-device" />
     <plugin name="cordova-plugin-android-permissions" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <!-- White list https access to Youtube -->
