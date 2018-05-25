@@ -160,6 +160,7 @@ function storeEventToIamGoing($this){
 
 function storeDefaultSettingsAndClose($this){
     var defaultSettings={};
+    var data1={};
     var container=$this.closest("div#wrapSettings");
     defaultSettings["checkedvideos"]=container.find("input[name='aEOE_videos']:checked").length>0?" checked='checked'":"";
     defaultSettings["checkednews"]=container.find("input[name='aEOE_news']:checked").length>0?" checked='checked'":"";
@@ -167,9 +168,14 @@ function storeDefaultSettingsAndClose($this){
     defaultSettings["checkedevents"]=container.find("input[name='aEOE_events']:checked").length>0?" checked='checked'":"";
     defaultSettings["range"]=container.find("input[name='aEOE_range']").val();
     
+    data1["videos"]=container.find("input[name='aEOE_videos']:checked").length>0?1:0;
+    data1["news"]=container.find("input[name='aEOE_news']:checked").length>0?1:0;
+    data1["questions"]=container.find("input[name='aEOE_questions']:checked").length>0?1:0;
+    data1["events"]=container.find("input[name='aEOE_events']:checked").length>0?1:0;
+    
     localStorage.setItem('defaultSettings', JSON.stringify(defaultSettings));
     
-    setupPush($this.attr("data-userid"), defaultSettings);
+    setupPush($this.attr("data-userid"), data1);
     
     app.routes[0].options.context=defaultSettings;
     app.router.back();
@@ -205,6 +211,8 @@ function displayHomeUser(data1, container){
     questionlinkContext=topNavigationDefault;
     
     biolinkContext["description"]=data["description"];
+    
+    $$("[data-target='comediansettings']").attr("data-context", JSON.stringify(eventlinkContext));
     
     $$("[data-id='eventlink']").attr("data-context", JSON.stringify(eventlinkContext));
     $$("[data-id='videolink']").attr("data-context", JSON.stringify(videolinkContext));
