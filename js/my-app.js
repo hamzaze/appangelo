@@ -169,6 +169,8 @@ function storeDefaultSettingsAndClose($this){
     
     localStorage.setItem('defaultSettings', JSON.stringify(defaultSettings));
     
+    setupPush($this.attr("data-userid"), defaultSettings);
+    
     app.routes[0].options.context=defaultSettings;
     app.router.back();
 }
@@ -322,6 +324,9 @@ function sendAjaxOnFly(postData, form, obj){
                         }
                         form.removeClass("no-result-found").addClass("results-found");
                     break;
+                    case "registerUserSettingsForPushNotifications":
+                        console.log(data["message"]);
+                    break;
                 }
             }else{
                 switch(postData["context"]){
@@ -463,6 +468,56 @@ function setupPushInit(){
          );
      });
 }
+
+function setupPush(userid, data1) {
+    if(isCordovaApp) {
+   var push = PushNotification.init({
+       "android": {},
+       "ios": {
+         "sound": true,
+         "alert": true,
+         "badge": true
+       },
+       "windows": {}
+   });
+
+   push.on('registration', function(data) {
+        console.log("userid ID: " + userid);
+        console.log("registration event: " + data.registrationId);
+        var oldRegId = localStorage.getItem('registrationId');
+        if (oldRegId !== data.registrationId) {
+            // Save new registration ID
+            localStorage.setItem('registrationId', data.registrationId);
+            // Post registrationId to your app server as the value has changed
+        }
+        var newRegID=localStorage.getItem('registrationId');
+       
+        var postData={};
+        postData["context"]="registerUserSettingsForPushNotifications";
+        postData["userid"]=userid;
+        postData["senderid"]=newRegID;
+        postData["oldsenderid"]=oldRegId;
+        postData["data"]=data1;
+       
+        sendAjaxOnFly(postData, null, null);
+       
+   });
+
+   push.on('error', function(e) {
+       console.log("push error = " + e.message);
+   });
+   
+   push.on('notification', function(data) {
+         console.log('notification event');
+         navigator.notification.alert(
+             data.message,         // message
+             null,                 // callback
+             data.title,           // title
+             'Ok'                  // buttonName
+         );
+     });
+    }
+ }
 
 var isCordovaApp = document.URL.indexOf('http://') === -1
   && document.URL.indexOf('https://') === -1;
